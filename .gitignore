@@ -36,4 +36,3 @@ next-env.d.ts
 
 pnpm-lock.yaml
 /index.js
-/xhr-sync-worker.js
