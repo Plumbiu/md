@@ -1,5 +1,6 @@
 import { build } from 'esbuild'
 import { readFile, writeFile } from 'node:fs/promises'
+import swc from '@swc/core'
 
 async function resolveBuild() {
   await build({
@@ -13,6 +14,11 @@ async function resolveBuild() {
   })
   let contents = await readFile('index.js', 'utf8')
   contents = contents.replace('./xhr-sync-worker.js', '@plumbiu/md/xhr-sync-worker.js')
+  contents = (
+    await swc.transform(contents, {
+      minify: true,
+    })
+  ).code
   await writeFile('index.js', contents)
 }
 
