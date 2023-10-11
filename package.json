@@ -1,11 +1,11 @@
 {
   "name": "@plumbiu/md",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "build": "tsup src/index.ts --dts --sourcemap --format esm,cjs --minify --clean"
+    "build": "tsup --config tsup.config.ts"
   },
   "files": [
     "dist",
