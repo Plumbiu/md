@@ -28,7 +28,7 @@ export function html2toc(
     const h = HLABEL.exec(token)?.[0]
     if (h) {
       const level = Number(h[2])
-      const hash = ID.exec(h)?.[1] ?? ''
+      const hash = '#' + (ID.exec(h)?.[1] ?? '')
       const content = h.slice(h.lastIndexOf('>') + 1)
       tocs.push({
         level,
