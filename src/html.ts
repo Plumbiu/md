@@ -1,3 +1,13 @@
+interface Html2TocOpts {
+  depth: number
+}
+
+interface Toc {
+  level: number
+  content: string
+  hash: string
+}
+
 export function html2toc(
   html: string,
   options: Html2TocOpts = {
@@ -9,11 +19,11 @@ export function html2toc(
   for (let i = 1; i <= depth; i++) {
     levelDep += i
   }
-  const HLABEL = new RegExp(`\\<h[${levelDep}][\\w\\W]+>[\\w\\W]+`)
+  const HLABEL = new RegExp(`<h[${levelDep}][\\w\\W]+>[\\w\\W]+`)
   const ID = /id=["']([\w\W]+)["']/
   const tocs: Toc[] = []
-
-  const tokens = html.split(HLABEL)
+  const tokens = html.split(new RegExp(`</h[${levelDep}]`))
+  
   for (const token of tokens) {
     const h = HLABEL.exec(token)?.[0]
     if (h) {
@@ -30,5 +40,3 @@ export function html2toc(
 
   return tocs
 }
-
-

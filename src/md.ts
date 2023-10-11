@@ -7,6 +7,10 @@ import rehypeHighlight from 'rehype-highlight'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 
+interface Md2htmlOpts {
+  lazy: boolean
+}
+
 export async function md2html(
   md: string,
   options: Md2htmlOpts = {

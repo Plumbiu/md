@@ -16,7 +16,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "removeComments": false,
-    "lib": ["es2022"],
+    "lib": ["es2022", "DOM"],
     "rootDir": "."
   },
   "ts-node": {
