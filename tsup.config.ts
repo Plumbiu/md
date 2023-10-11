@@ -9,4 +9,5 @@ export default defineConfig({
   minify: true,
   dts: true,
   noExternal: [/(.*)/],
+  target: 'es5',
 })
