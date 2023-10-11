@@ -8,6 +8,6 @@ export default defineConfig({
   bundle: true,
   minify: true,
   dts: true,
-  noExternal: [/(.*)/],
-  target: 'es5',
+  // bundle all packages, nextjs will break in build process
+  // noExternal: [/(.*)/],
 })
