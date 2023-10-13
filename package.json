@@ -1,7 +1,7 @@
 {
   "name": "@plumbiu/md",
   "version": "0.2.8",
-  "description": "",
+  "description": "tools for markdown parser",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
@@ -16,7 +16,8 @@
     "md",
     "parse",
     "toc",
-    "html"
+    "html",
+    "blog"
   ],
   "exports": {
     ".": {
