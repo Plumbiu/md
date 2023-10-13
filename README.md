@@ -46,12 +46,44 @@ import { md2html } from '@plumbiu/md'
 
 await md2toc('<h1 id="hello-world">hello world</h1>', {
   // depth mean the toc depth
-  depth: 3 // 3 by default
+  depth: 3, // 3 by default
 })
 
 /*
   [
     { level: 1, content: 'hello world', hash: 'hello-world' }
+  ]
+*/
+```
+
+### md2toc
+
+```ts
+/* function md2toc(md: string, options?: Md2tocOpts): {
+  level: number
+  id: string
+  content: string
+}[]; */
+
+import { md2toc } from '@plumbiu/md'
+
+await md2toc(
+  `
+# hello
+world
+# foo bar
+baz
+`,
+  {
+    // depth mean the toc depth
+    depth: 3, // 3 by default
+  },
+)
+
+/*
+  [
+    { level: 1, content: 'hello', id: 'hello' },
+    { level: 1, content: 'foo bar', id: 'foobar' },
   ]
 */
 ```
