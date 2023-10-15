@@ -56,6 +56,21 @@ await md2toc('<h1 id="hello-world">hello world</h1>', {
 */
 ```
 
+> As this repo is used for transfrom markdown, html(at least `h` label) should not be nested.
+
+HTML like this will get error output:
+
+```html
+<div>
+  <div>
+    <h1>hello</h1>
+  </div>
+  <div>
+    <h2>world</h2>
+  </div>
+</div>
+```
+
 ### md2toc
 
 ```ts
@@ -93,7 +108,7 @@ baz
 `@plumbiu/md` offer the `highliht.js` and `github-markdown-light.css` style
 
 ```ts
-import '@plumbiu/styles/github-markdown-light.css'
+import '@plumbiu/styles/github-markdown.css'
 // for code block
-import '@plumbiu/styles/hljs-markdown-light.css'
+import '@plumbiu/styles/hljs-markdown.css'
 ```
