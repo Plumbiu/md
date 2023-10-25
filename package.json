@@ -9,7 +9,8 @@
     "url": "git+https://github.com/Plumbiu/md"
   },
   "scripts": {
-    "build": "tsup --config tsup.config.ts"
+    "build": "tsup --config tsup.config.ts",
+    "test": "vitest"
   },
   "files": [
     "dist",
@@ -39,9 +40,9 @@
   "author": "Plumbiu",
   "license": "MIT",
   "devDependencies": {
-    "@swc/core": "^1.3.92",
     "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
   },
   "dependencies": {
     "highlight.js": "^11.8.0",
