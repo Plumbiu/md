@@ -51,18 +51,25 @@ export function md2toc(
   },
 ) {
   const { depth } = options
-  const TITLE = new RegExp(`#{1,${depth}}\\s(.*)`, 'g')
-  let m: RegExpExecArray | null
+  let pos = 0
   const toc: Toc[] = []
-  while ((m = TITLE.exec(md))) {
-    const title = m[0]
-    const level = title.indexOf('# ') + 1
-    const content = title.slice(level + 1)
+  while (((pos = md.indexOf('#')), pos) !== -1) {
+    const start = pos
+    while (md[pos] === '#') {
+      pos++
+    }
+    const level = pos - start
+    if (level > depth) {
+      continue
+    }
+    const content = md.slice(pos + 1, (pos = md.indexOf('\n', pos)))
+    const id = content.replace(/\s/g, '')
     toc.push({
       level,
       content,
-      id: content.replace(/\s/g, ''),
+      id,
     })
+    md = md.slice(pos)
   }
   return toc
 }
