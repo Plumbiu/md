@@ -105,7 +105,7 @@ baz
 
 ### styles
 
-`@plumbiu/md` offer the `highliht.js` and `github-markdown-light.css` style
+`@plumbiu/md` offer the `highliht.js` and `github-markdown.css` style
 
 ```ts
 import '@plumbiu/styles/github-markdown.css'
