@@ -16,10 +16,10 @@ test('base test', () => {
   const toc = md2toc(md)
 
   expect(toc).toEqual([
-    { level: 1, content: 'hello', id: 'hello' },
-    { level: 2, content: 'world', id: 'world' },
-    { level: 2, content: 'foo', id: 'foo' },
-    { level: 1, content: 'bar', id: 'bar' },
+    { level: 1, title: 'hello' },
+    { level: 2, title: 'world' },
+    { level: 2, title: 'foo' },
+    { level: 1, title: 'bar' },
   ])
 })
 
@@ -38,10 +38,10 @@ test('with s test', () => {
   const toc = md2toc(md)
 
   expect(toc).toEqual([
-    { level: 1, content: 'hello world', id: 'helloworld' },
-    { level: 2, content: 'world', id: 'world' },
-    { level: 2, content: 'foo', id: 'foo' },
-    { level: 1, content: 'bar', id: 'bar' },
+    { level: 1, title: 'hello world' },
+    { level: 2, title: 'world' },
+    { level: 2, title: 'foo' },
+    { level: 1, title: 'bar' },
   ])
 })
 
@@ -61,12 +61,14 @@ test('python comment', () => {
 hello world # 你好
 # bar
 `
-  const toc = md2toc(md)
+  const toc = md2toc(md, {
+    isPython: true,
+  })
 
   expect(toc).toEqual([
-    { level: 1, content: 'hello world', id: 'helloworld' },
-    { level: 2, content: 'world', id: 'world' },
-    { level: 2, content: 'foo', id: 'foo' },
-    { level: 1, content: 'bar', id: 'bar' },
+    { level: 1, title: 'hello world' },
+    { level: 2, title: 'world' },
+    { level: 2, title: 'foo' },
+    { level: 1, title: 'bar' },
   ])
 })
