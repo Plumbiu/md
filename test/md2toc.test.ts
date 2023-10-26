@@ -1,7 +1,6 @@
 import { md2toc } from 'src'
 import { expect, test } from 'vitest'
 
-
 test('base test', () => {
   const md = `
 # hello
@@ -24,7 +23,7 @@ test('base test', () => {
   ])
 })
 
-test('with \s test', () => {
+test('with s test', () => {
   const md = `
 # hello world
 
@@ -46,3 +45,28 @@ test('with \s test', () => {
   ])
 })
 
+test('python comment', () => {
+  const md = `
+# hello world
+
+## world
+
+你好
+
+## foo
+
+\`\`\`python
+# heelo
+\`\`\`
+hello world # 你好
+# bar
+`
+  const toc = md2toc(md)
+
+  expect(toc).toEqual([
+    { level: 1, content: 'hello world', id: 'helloworld' },
+    { level: 2, content: 'world', id: 'world' },
+    { level: 2, content: 'foo', id: 'foo' },
+    { level: 1, content: 'bar', id: 'bar' },
+  ])
+})

@@ -35,41 +35,66 @@ export async function md2html(
 }
 
 interface Md2tocOpts {
-  depth: number
+  isPython?: boolean
 }
 
 interface Toc {
   level: number
-  id: string
-  content: string
+  title: string
 }
 
 export function md2toc(
   md: string,
   options: Md2tocOpts = {
-    depth: 3,
+    isPython: false,
   },
 ) {
-  const { depth } = options
+  const { isPython } = options
   let pos = 0
   const toc: Toc[] = []
+  let codePos = 0
+  if (isPython) {
+    while ((codePos = md.indexOf('```')) !== -1) {
+      const end = md.indexOf('```', codePos + 3)
+      md = md.replace(md.slice(codePos, end + 3), '')
+    }
+  }
+
   while (((pos = md.indexOf('#')), pos) !== -1) {
+    if (md[pos - 1] !== '\n') {
+      md = md.slice(++pos)
+      continue
+    }
     const start = pos
     while (md[pos] === '#') {
       pos++
     }
     const level = pos - start
-    if (level > depth) {
-      continue
-    }
-    const content = md.slice(pos + 1, (pos = md.indexOf('\n', pos)))
-    const id = content.replace(/\s/g, '')
+    const title = md.slice(pos + 1, (pos = md.indexOf('\n', pos)))
     toc.push({
       level,
-      content,
-      id,
+      title,
     })
     md = md.slice(pos)
   }
   return toc
 }
+
+// const md = `
+// # hello world
+
+// ## world
+
+// 你好
+
+// ## foo
+
+// \`\`\`python
+// # heelo
+// \`\`\`
+// hello world # 你好
+// # bar
+// `
+// const toc = md2toc(md)
+
+// console.log({ toc })
