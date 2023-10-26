@@ -79,22 +79,3 @@ export function md2toc(
   }
   return toc
 }
-
-// const md = `
-// # hello world
-
-// ## world
-
-// 你好
-
-// ## foo
-
-// \`\`\`python
-// # heelo
-// \`\`\`
-// hello world # 你好
-// # bar
-// `
-// const toc = md2toc(md)
-
-// console.log({ toc })
