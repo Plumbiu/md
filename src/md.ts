@@ -61,7 +61,7 @@ export function md2toc(
   }
 
   while (((pos = md.indexOf('#')), pos) !== -1) {
-    if (md[pos - 1] !== '\n') {
+    if (md[pos - 1] !== '\n' && pos !== 0) {
       md = md.slice(++pos)
       continue
     }
