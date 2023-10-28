@@ -6,6 +6,7 @@ export default defineConfig({
   format: 'esm',
   clean: true,
   bundle: true,
+  target: 'es5',
   minify: true,
   dts: true,
   // bundle all packages, nextjs will break in build process
