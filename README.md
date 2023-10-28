@@ -9,6 +9,44 @@ this respository is used for [@plumbiu/blog](https://github.com/Plumbiu/blog) as
 
 ## Usage
 
+### parseMd
+
+> `md2html` + `md2toc`
+
+```ts
+/*
+  function parseMd(
+    md: string,
+    options = {
+      isPython: false,
+      lazy: true
+    },
+  ): Promise<{
+    html: string
+    toc: {
+      level: number
+      title: string
+    }[]
+  }>
+*/
+import { parseMd } from '@plumbiu/md'
+await parseMd('# hello\r\nworld', {
+  // if lazy option is true, img label will be <img loading="lazy" />
+  lazy: true, // true by default
+})
+
+/*
+{
+  html: `<h1>hello</h1>
+  <p>World</p>`,
+  toc: [
+    { title: 'hello', level: 1 }
+  ]
+}
+
+*/
+```
+
 ### md2html
 
 ```ts
@@ -46,7 +84,7 @@ import { md2html } from '@plumbiu/md'
 
 await md2toc('<h1 id="hello-world">hello world</h1>', {
   // WARNING: this will very slowly
-  isPython: false // default by true, if you use Python, remeber set this option to `true`
+  isPython: false, // default by true, if you use Python, remeber set this option to `true`
 })
 
 /*
@@ -112,6 +150,5 @@ import '@plumbiu/styles/github-markdown.css'
 // for code block
 import '@plumbiu/styles/hljs-markdown.css'
 ```
-
 
 `dark-theme` needs add `<html theme="dark"></html>`
