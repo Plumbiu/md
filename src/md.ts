@@ -79,3 +79,19 @@ export function md2toc(
   }
   return toc
 }
+
+export async function parseMd(
+  md: string,
+  options: Md2htmlOpts & Md2tocOpts = {
+    lazy: true,
+    isPython: false,
+  },
+) {
+  const { lazy, isPython } = options
+  const data = {
+    html: await md2html(md, { lazy }),
+    toc: md2toc(md, { isPython }),
+  }
+
+  return data
+}
