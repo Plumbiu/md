@@ -9,5 +9,5 @@ export default defineConfig({
   minify: true,
   dts: true,
   // bundle all packages, nextjs will break in build process
-  noExternal: [/(.*)/],
+  noExternal: ['html2toc', /rehype-*/, /remark-*/, 'simple-md-front-matter'],
 })

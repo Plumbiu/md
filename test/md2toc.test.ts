@@ -24,8 +24,7 @@ test('base test', () => {
 })
 
 test('with s test', () => {
-  const md = `
-# hello world
+  const md = `# hello world
 
 ## world
 

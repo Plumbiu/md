@@ -45,8 +45,8 @@ await md2html('# hello\r\nworld', {
 import { md2html } from '@plumbiu/md'
 
 await md2toc('<h1 id="hello-world">hello world</h1>', {
-  // depth mean the toc depth
-  depth: 3, // 3 by default
+  // WARNING: this will very slowly
+  isPython: false // default by true, if you use Python, remeber set this option to `true`
 })
 
 /*
@@ -112,3 +112,6 @@ import '@plumbiu/styles/github-markdown.css'
 // for code block
 import '@plumbiu/styles/hljs-markdown.css'
 ```
+
+
+`dark-theme` needs add `<html theme="dark"></html>`

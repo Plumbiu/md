@@ -1,6 +1,6 @@
 {
   "name": "@plumbiu/md",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "tools for markdown parser",
   "main": "dist/index.js",
   "type": "module",
@@ -45,7 +45,6 @@
     "vitest": "^0.34.6"
   },
   "dependencies": {
-    "highlight.js": "^11.8.0",
     "html2toc": "^0.0.3",
     "rehype-highlight": "^7.0.0",
     "rehype-sanitize": "^6.0.0",
@@ -54,6 +53,7 @@
     "remark-gfm": "^4.0.0",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.0.0",
+    "simple-md-front-matter": "^0.0.4",
     "unified": "^11.0.3"
   }
 }
