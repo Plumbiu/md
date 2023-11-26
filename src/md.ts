@@ -4,6 +4,7 @@ import remarkRehype from 'remark-rehype'
 import rehypeSanitize from 'rehype-sanitize'
 import rehypeStringify from 'rehype-stringify'
 import rehypeHighlight from 'rehype-highlight'
+import rehypePresetMinify from 'rehype-preset-minify'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 
@@ -20,6 +21,7 @@ export async function md2html(
   const { lazy } = options
   const file = await unified()
     .use(remarkParse) // Convert into markdown AST
+    .use(rehypePresetMinify)
     .use(remarkRehype) // Transform to HTML AST
     .use(rehypeSanitize) // Sanitize HTML input
     .use(rehypeStringify) // Convert AST into serialized HTML
